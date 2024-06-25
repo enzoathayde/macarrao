@@ -1,0 +1,39 @@
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10% 0;
+}
+
+.main .inputs form{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #b3b3b3;
+  padding: 40px 40px;
+  border-radius: 7px;
+}
+
+
+.main .inputs input{
+  height: 25px;
+  width: 250px;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: center;
+  border-radius: inherit;
+}
+
+h1 {
+  margin: 0;
+}
+
+button {
+  background-color: black;
+  height: 60px;
+  width: 150px;
+  color: #FFF;
+  font-weight: 700;
+  border-radius: inherit;
+}
