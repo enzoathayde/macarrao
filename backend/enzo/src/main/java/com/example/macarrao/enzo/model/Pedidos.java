@@ -11,10 +11,10 @@ public class Pedidos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer pedidoId;
 
-    @Column
+    @Column(nullable = false)
     private Date dataHora;
 
-    @Column
+    @Column(nullable = false)
     private Integer precoTotal;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})

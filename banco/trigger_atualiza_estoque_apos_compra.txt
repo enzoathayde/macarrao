@@ -1,0 +1,22 @@
+# Regra de negócio imposta pela Trigger - o dono do restaurante já possui um pré-cadastro dos produtos que ele deseja utilizar para montar os seus pedidos para os clientes, logo implica que toda compra deve contar com um produto já cadastrado na tabela produtos.
+# A trigger em questão fará com que toda compra seja inserida no estoque e caso o sistema registre duas compras do mesmo produto, o estoque mudará apenas a quantidade.
+
+
+DELIMITER ||
+CREATE TRIGGER autualiza_estoque_pos_compra
+AFTER INSERT ON compras
+FOR EACH ROW 
+BEGIN
+	IF EXISTS (SELECT produto_id FROM estoque WHERE produto_id = NEW.produto_id) THEN
+		UPDATE estoque SET quantidade = quantidade + NEW.quantidade;
+        	UPDATE estoque SET data_atualizacao = NEW.data_compra;
+	ELSE
+		INSERT INTO estoque VALUES(NEW.compra_id,NEW.produto_id,NEW.quantidade,NEW.data_compra);
+    END IF;
+END ||
+DELIMITER ;
+
+SHOW TRIGGERS;
+DROP TRIGGER autualiza_estoque_pos_compra;
+INSERT INTO compras VALUES(1,NOW(),"DogFoods",1,100,10000);
+DELETE FROM compras;

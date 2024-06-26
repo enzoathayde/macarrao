@@ -24,9 +24,10 @@ CREATE TABLE IF NOT EXISTS `macarrao`.`produtos` (
   `produto_id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `tipo` VARCHAR(255) NOT NULL,
-  `preco` INT NULL DEFAULT NULL,
+  `preco` INT NOT NULL,
   PRIMARY KEY (`produto_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 15
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -47,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `macarrao`.`compras` (
     FOREIGN KEY (`produto_id`)
     REFERENCES `macarrao`.`produtos` (`produto_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -74,32 +76,16 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `macarrao`.`pedidos` (
   `pedido_id` INT NOT NULL AUTO_INCREMENT,
-  `data_hora` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `preco_total` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`pedido_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `macarrao`.`itens_pedido`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `macarrao`.`itens_pedido` (
-  `item_id` INT NOT NULL AUTO_INCREMENT,
-  `pedido_id` INT NOT NULL,
+  `data_hora` DATETIME NOT NULL,
+  `preco_total` INT NOT NULL,
   `produto_id` INT NOT NULL,
-  `quantidade` INT NOT NULL,
-  PRIMARY KEY (`item_id`),
-  INDEX `pedido_id` (`pedido_id` ASC) VISIBLE,
-  INDEX `produto_id` (`produto_id` ASC) VISIBLE,
-  CONSTRAINT `itens_pedido_ibfk_1`
-    FOREIGN KEY (`pedido_id`)
-    REFERENCES `macarrao`.`pedidos` (`pedido_id`),
-  CONSTRAINT `itens_pedido_ibfk_2`
+  PRIMARY KEY (`pedido_id`),
+  INDEX `fk_pedidos_produtos1_idx` (`produto_id` ASC) VISIBLE,
+  CONSTRAINT `fk_pedidos_produtos1`
     FOREIGN KEY (`produto_id`)
     REFERENCES `macarrao`.`produtos` (`produto_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
