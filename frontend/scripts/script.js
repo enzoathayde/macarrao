@@ -1,47 +1,40 @@
-// Utilizando DOM
+const formulario = document.getElementById("form"); // Access the form element
 
-const formulario  = document.querySelector("form");  // acessei uma tag 
+// Access form input elements
+const nomeProduto = document.getElementById("nome");
+const tipoProduto = document.getElementById("tipo");
+const precoProduto = document.getElementById("preco");
 
-
-// estou acessando classes
-const nomeProduto = document.querySelector(".nome");
-const tipoProduto = document.querySelector(".tipo");
-const precoProduto = document.querySelector(".preco");
-const route = "http://localhost:8080/produtos"
-
-
-
-
-
+const route = "http://localhost:8080/produtos";
 
 function cadastrarProduto() {
-  
-  fetch(route,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST", // ENVIAR ALGO 
-      body: JSON.stringify({nomeProduto: nomeProduto.value, 
-        tipoProduto: tipoProduto.value,
-        precoProduto: precoProduto.value})
-    })
-    .then(function (res) {console.log(res)})  
-    .catch(function (res) {console.log(res)}) 
-};
+  event.preventDefault(); 
 
-function limparCadastro() {
-  nomeProduto.value = "",
-  tipoProduto.value = "",
-  precoProduto.value = ""
+  
+  const novoProduto = {
+    nome: nomeProduto.value,
+    tipo: tipoProduto.value,
+    preco: Number(precoProduto.value, 10) 
+  };
+
+
+  fetch("http://localhost:8080/produtos", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    }, 
+    body: JSON.stringify(novoProduto)
+  })
+    .then(response => {
+      console.log('Response',response);
+    })
+    .catch(error => {
+      console.error('Error', error);
+    });
+    console.log(novoProduto)
+    limparCadastro();
 }
 
-
-// criação do objeto em JSON
-formulario.addEventListener('submit', function(event) { 
-  event.preventDefault();  // ESTUDAR ISSO
-  cadastrarProduto();
-  limparCadastro();
-});
-
+function exibirProdutos() {
+  fetch("http://localhost:8080/produtos")
+}

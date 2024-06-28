@@ -3,13 +3,15 @@ package com.example.macarrao.enzo.controller;
 import com.example.macarrao.enzo.model.Produtos;
 import com.example.macarrao.enzo.repository.ProdutosRepository;
 import jakarta.persistence.*;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/produtos")
+//@RequestMapping("/produtos")
+@CrossOrigin("*")
 public class ProdutosController {
 
     private ProdutosRepository produtosRepository;
@@ -20,7 +22,7 @@ public class ProdutosController {
     }
 
     @PostMapping
-    @RequestMapping
+    @RequestMapping("/produtos")
     public Produtos criarProduto (@RequestBody Produtos novoProduto) {
         return produtosRepository.save(novoProduto);
     }
