@@ -1,11 +1,10 @@
 const formulario = document.getElementById("form"); // Access the form element
 
 // Access form input elements
-const nomeProduto = document.getElementById("nome");
-const tipoProduto = document.getElementById("tipo");
-const precoProduto = document.getElementById("preco");
+const nomeProduto = document.getElementById("nome")
+const tipoProduto = document.getElementById("tipo")
+const precoProduto = document.getElementById("preco")
 
-const route = "http://localhost:8080/produtos";
 
 function cadastrarProduto() {
   event.preventDefault(); 
@@ -32,9 +31,5 @@ function cadastrarProduto() {
       console.error('Error', error);
     });
     console.log(novoProduto)
-    limparCadastro();
 }
 
-function exibirProdutos() {
-  fetch("http://localhost:8080/produtos")
-}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="shortcut icon" href="../images/macarrao.png">
+  <script src="../scripts/cadastrarProduto.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <title>Dimagiro Massas</title>
+</head>
+<body>
+  <nav>
+    <div class="nav">
+      <div class="title">
+        <h1>Dimagiro Massas</h1>
+      </div>
+      <div class="list">
+        <ul>
+          <li><a href="">Cadastrar Produto</a></li>
+          <li><a href="">Verificar Pedidos</a></li>
+          <li><a href="">Verificar Estoque</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <main>
+    <div class="main">
+      <div class="title">
+        <h1>Cadastre seu Produto</h1>
+      </div>
+      <div class="inputs">
+        <form action="">
+          <input type="text" id="nome" name="nome" placeholder="Digite o nome do seu Produto">
+          <input type="text" id="tipo" name="tipo" placeholder="Digite o tipo do seu Produto">
+          <input type="number" id="preco" name="preco" placeholder="Digite o preço unitário do seu Produto">
+          <button onclick="cadastrarProduto()"> CADASTRAR PRODUTO</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

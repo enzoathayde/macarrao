@@ -38,6 +38,11 @@ public class ProdutosController {
         return "Soma total em produtos: " + somaProdutos / 100  + "R$";
     }
 
+    @GetMapping
+    @RequestMapping("/mostrarProdutos")
+    public List<Produtos> mostrarProdutos() { return (List<Produtos>) produtosRepository.findAll();}
+
+
 //    @DeleteMapping("/deletar/{nome}")
 
 
